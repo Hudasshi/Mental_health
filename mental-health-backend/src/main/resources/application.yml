@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mental_health_assistant?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: 123456
+server:
+  port: 8080
+# JWT配置
+jwt:
+  secret: MySecretKeyForJWT2025!@#$%^&*()_+SecureKeyHere
+  expiration: 86400000 # 24小时（毫秒）
+  refresh-expiration: 604800000 # 7天（毫秒）
+  header: Authorization # token头部名称
+  token-prefix: "Bearer " # token前缀
