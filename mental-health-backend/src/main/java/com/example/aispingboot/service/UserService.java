@@ -60,6 +60,7 @@ public class UserService {
         UserLoginResponseDTO.UserDetailResponseDTO userInfo= UserConvert.entityToDetailResponse(user);
         return UserConvert.entityToLoginResponse(token, userInfo);
     }
+
     // 用户注册
     public UserLoginResponseDTO.UserDetailResponseDTO register(UserRegisterCommandDTO commandDTO){
         System.out.println(JSONUtil.parseObj(commandDTO));
@@ -67,14 +68,14 @@ public class UserService {
              throw new BusinessException("两次输入密码不一致");
         }
         // 判断用户名是否已存在
-        LambdaQueryWrapper<UserEntity> userNameQuery = new LambdaQueryWrapper<UserEntity>();
+        LambdaQueryWrapper<UserEntity> userNameQuery = new LambdaQueryWrapper<>();
         userNameQuery.eq(UserEntity::getUsername, commandDTO.getUsername());
         if(userMapper.selectCount(userNameQuery)>0){
             throw new BusinessException("用户名已存在");
         }
         // 判断邮箱是否已存在
-        LambdaQueryWrapper<UserEntity> emailQuery = new LambdaQueryWrapper<UserEntity>();
-        emailQuery.eq(UserEntity::getUsername,commandDTO.getEmail());
+        LambdaQueryWrapper<UserEntity> emailQuery = new LambdaQueryWrapper<>();
+        emailQuery.eq(UserEntity::getEmail,commandDTO.getEmail());
         if(userMapper.selectCount(emailQuery) > 0){
             throw new BusinessException("邮箱已存在");
         }
