@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.*;
 import com.example.aispingboot.enumClass.UserStatus;
 import com.example.aispingboot.enumClass.UserType;
 import jakarta.validation.constraints.*;
+import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -17,6 +18,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @TableName("user")
+@Builder
 public class UserEntity {
     //主键id
     @TableId(type = IdType.AUTO)

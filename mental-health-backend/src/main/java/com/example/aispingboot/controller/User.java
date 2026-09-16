@@ -1,6 +1,7 @@
 package com.example.aispingboot.controller;
 
 import com.example.aispingboot.DTO.command.UserLoginCommandDTO;
+import com.example.aispingboot.DTO.command.UserRegisterCommandDTO;
 import com.example.aispingboot.DTO.response.UserLoginResponseDTO;
 import com.example.aispingboot.common.Result;
 import com.example.aispingboot.service.UserService;
@@ -25,6 +26,10 @@ public class User {
     public Result<UserLoginResponseDTO> login(@Valid @RequestBody UserLoginCommandDTO commandDTO){
         UserLoginResponseDTO result = userService.login(commandDTO);
         return Result.OK(result);
-
+    }
+    @PostMapping("/add")
+    public Result<UserLoginResponseDTO.UserDetailResponseDTO> register(@Valid @RequestBody UserRegisterCommandDTO commandDTO){
+        UserLoginResponseDTO.UserDetailResponseDTO result = userService.register(commandDTO);
+        return Result.OK(result);
     }
 }

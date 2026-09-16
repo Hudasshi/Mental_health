@@ -22,7 +22,8 @@ import org.springframework.security.web.SecurityFilterChain;
 public class securityConfig {
     private final String[] PUBLIC_PATHS = {
             "/",
-            "/api/user/login"
+            "/api/user/login",
+            "/api/user/add"
     };
     @Bean
     public SecurityFilterChain filterChain (HttpSecurity http)throws Exception{

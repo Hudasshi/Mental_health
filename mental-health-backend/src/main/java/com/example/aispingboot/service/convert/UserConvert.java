@@ -1,7 +1,11 @@
 package com.example.aispingboot.service.convert;
 
+import com.example.aispingboot.DTO.command.UserRegisterCommandDTO;
 import com.example.aispingboot.DTO.response.UserLoginResponseDTO;
 import com.example.aispingboot.entity.UserEntity;
+import com.example.aispingboot.enumClass.UserStatus;
+
+import java.time.LocalDateTime;
 
 /**
  * 用户实体结果转换类
@@ -46,6 +50,21 @@ public class UserConvert {
                 .userInfo(userInfo)
                 .token(token)
                 .roleType(userInfo.getUserType().toString())
+                .build();
+    }
+    public static UserEntity registerCommandToEntity(UserRegisterCommandDTO command,String encodedPassword){
+        return  UserEntity.builder()
+                .username(command.getUsername())
+                .password(encodedPassword)
+                .email(command.getEmail())
+                .phone(command.getPhone())
+                .nickname(command.getNickname())
+                .gender(command.getGender())
+                .birthday(command.getBirthday())
+                .userType(command.getUserType())
+                .status(UserStatus.NORMAL.getCode())
+                .createdAt(LocalDateTime.now())
+                .updatedAt(LocalDateTime.now())
                 .build();
     }
 
