@@ -3,9 +3,11 @@ package com.example.aispingboot.util;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.example.aispingboot.config.JwtConfig;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import javax.xml.crypto.Data;
 import java.util.Date;
@@ -46,5 +48,25 @@ public class JwtTokenUtil implements ApplicationContextAware {
             // 生成token异常，包装为运行时异常抛出
             throw new RuntimeException("生成token 失败: " + e);
         }
+    }
+    //requestUser：10 提取token,判断token对象存不存在
+    /**
+     * 从HttpServletRequest请求头中提取token
+     * @param request http请求对象
+     * @return 存在token则返回token字符串，不存在/请求对象为null返回null
+     */
+    public static String extractTokenFromRequest(HttpServletRequest request) {
+        // 请求对象为空，直接返回null
+        if (request == null) {
+            return null;
+        }
+        // 获取请求头中key为token的值
+        String tokenHeader = request.getHeader("token");
+        // 判断token不为空串且不为空白字符
+        if (StringUtils.hasText(tokenHeader)) {
+            return tokenHeader;
+        }
+        // token不存在返回null
+        return null;
     }
 }

@@ -32,4 +32,10 @@ public class User {
         UserLoginResponseDTO.UserDetailResponseDTO result = userService.register(commandDTO);
         return Result.OK(result);
     }
+    //requestUser：1.创建接口获取当前登录用户
+    //获取用户数据
+    @GetMapping("/current")
+    public Result<UserLoginResponseDTO.UserDetailResponseDTO> getCurrentUser(){
+        return null;
+    }
 }
