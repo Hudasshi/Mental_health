@@ -91,4 +91,12 @@ public class UserService {
         userMapper.insert(userEntity);
         return UserConvert.entityToDetailResponse(userEntity);
     }
+    //用户查询
+    public UserLoginResponseDTO.UserDetailResponseDTO getUserById(Long userId){
+        UserEntity user = userMapper.selectById(userId);
+        if(user==null){
+            throw new BusinessException("用户不存在");
+        }
+        return UserConvert.entityToDetailResponse(user);
+    }
 }

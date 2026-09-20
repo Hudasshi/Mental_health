@@ -20,7 +20,7 @@ import java.nio.charset.StandardCharsets;
  */
 //requestUser：11 写入响应
 public class ResponseUtil {
-    public static void wirteError(HttpServletResponse response, ResultCode resultCode){
+    public static void writeError(HttpServletResponse response, ResultCode resultCode){
         int status = switch (resultCode){
             //401
             case UNAUTHORIZED,ACCESS_UNAUTHORIZED,TOKEN_INVALID, TOKEN_EXPIRED, TOKEN_BLOCKED->
