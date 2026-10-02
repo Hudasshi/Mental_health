@@ -1,11 +1,13 @@
 package com.example;
 
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.ai.model.openai.autoconfigure.OpenAiAudioSpeechAutoConfiguration;
+import org.springframework.ai.model.openai.autoconfigure.OpenAiAudioTranscriptionAutoConfiguration;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
-
+@SpringBootApplication()
 public class MentalHealthBackendApplication {
 
     public static void main(String[] args) {

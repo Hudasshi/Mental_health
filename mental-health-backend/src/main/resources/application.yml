@@ -4,6 +4,16 @@ spring:
     url: jdbc:mysql://localhost:3306/mental_health_assistant?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
     username: root
     password: 123456
+    # SpringAI 配置
+  ai:
+    openai:
+      # 【顶层】阿里云百炼兼容模式地址，必须带 /v1
+      base-url: https://api.deepseek.com/v1
+      # 【顶层】百炼 API Key
+      api-key: sk-ad3b6bcffe034d8094329c086dd3e4e2
+      chat:
+        options:
+          model: deepseek-chat
 server:
   port: 8080
 # JWT配置

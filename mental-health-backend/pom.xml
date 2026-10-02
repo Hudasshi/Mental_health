@@ -85,7 +85,32 @@
             <artifactId>hutool-all</artifactId>
             <version>5.8.25</version>
         </dependency>
+        <!-- SpringAI：对接 OpenAI 兼容接口（这里用的是豆包/DeepSeek 等兼容 OpenAI 协议的模型） -->
+        <!-- 依赖不需要写version -->
+            <dependency>
+                <groupId>org.springframework.ai</groupId>
+                <artifactId>spring-ai-starter-model-openai</artifactId>
+            </dependency>
+
+
+
     </dependencies>
+    <!-- 先在dependencyManagement引入BOM统一管理版本 -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.ai</groupId>
+                <artifactId>spring-ai-bom</artifactId>
+                <version>2.0.1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+
+
 
     <build>
         <plugins>

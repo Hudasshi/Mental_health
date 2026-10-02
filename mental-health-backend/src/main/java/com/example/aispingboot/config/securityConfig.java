@@ -30,7 +30,9 @@ public class securityConfig {
     private static final String[] PUBLIC_PATHS = {
             "/",
             "/api/user/login",
-            "/api/user/add"
+            "/api/user/add",
+            "/api/psychological-chat/stream"
+
     };
     //requestUser：2.判断请求路径是否为公开路径
     /**
